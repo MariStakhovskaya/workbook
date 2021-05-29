@@ -1,0 +1,25 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    color: bisque;
+}
+
+.practiceBlock {
+    width: 350px;
+    min-height: 400px;
+    background-color: #252d4a;
+    border-radius: 15px;
+}
+
+.practiceItem{
+    display: flex;
+    flex-direction: column;
+}
+
+.imgItem img{
+    width: 340px;
+
+}

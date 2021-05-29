@@ -1,0 +1,13 @@
+.header{
+    grid-area: h;
+    background: url(../../assets/img/banner-bg.png) no-repeat top center;
+   /* background-size: cover;
+    min-height: 205px;*/
+}
+
+.header div {
+    font-family: "Berlin Sans FB";
+    font-weight: bolder;
+    margin: 25px;
+}
+
