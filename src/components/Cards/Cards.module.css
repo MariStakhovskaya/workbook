@@ -47,3 +47,13 @@
     color: beige;
     font-size: 1.3rem;
 }
+
+.levelBlock {
+    color: beige;
+    display: flex;
+    width: 450px;
+}
+
+.levelBlock button:hover{
+    background-color: #234668;
+}

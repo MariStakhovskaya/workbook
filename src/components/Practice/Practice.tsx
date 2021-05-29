@@ -7,6 +7,10 @@ const Practice = () => {
     return ( <div className={s.wrap}>
             <div className={s.description}>Здесь будут примеры для применения знаний на практике</div>
             <div className={s.practiceBlock}>
+                <button>JS</button>
+                <button>React,Redux</button>
+                <button>HTML+CSS</button>
+                <button>with API</button>
 
                 <div className={s.practiceItem}>
                     <div className={s.imgItem}><img src={pract} /></div>
