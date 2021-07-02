@@ -277,7 +277,7 @@ const Cards = () => {
     console.log(cardsQuestions)
     useEffect( () => {
 
-    fetch('http://localhost:3004/react')
+    fetch('http://https://maristakhovskaya.github.io/workbook/db.json')
     .then(res => {
         return res.json()
     })
