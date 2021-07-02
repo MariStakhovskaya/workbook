@@ -24,7 +24,7 @@ const App = (props: AppPropsType) => {
                        render={() => <Theory />}/>
                 <Route path="/practice"
                        render={() => <Practice />}/>
-                <Route path="/cards"
+                <Route path="/cardsQuestion"
                        render={() => <Cards />}/>
                 <Route path="/resource"
                        render={() => <Resource/>}/>
