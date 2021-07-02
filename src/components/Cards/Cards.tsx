@@ -1,21 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './Cards.module.css'
-
-type CardsQuestions ={
-    id:number;
-    question: string,
-    answer: string,
-    level: string
-}
-
-type FilterValueType = "easy" | "hard" | "all"
+import Card from "./card/Card";
 
 
-const cardsQuestions:CardsQuestions[]  = [
+/*const cardsQuestions  = [
     { id:1,
         question: "Что такое TDD?",
     answer:"test-driven development - техника разработки ПО, при котором сначала пишем тесты, а потом их удовлетворяем. Затем можем спокойно рефакторить и изменять код как угодно, т.к. у нас есть тесты, которые точно скажут, что мы где-то ошиблись ",
-        level: "easy"}
+        level: "easy",
+    }
     ,
     { id:2,
         question: "Что такое Redux? Для чего он нужен?",
@@ -126,74 +119,192 @@ const cardsQuestions:CardsQuestions[]  = [
         answer:"."
         ,level: "hard"},
 
-]
+]*/
+/*const cardsQuestionsHtml  = [
+    { id:1,
+        question: "Что такое doctype? И для чего он используется?",
+        answer:" Doctype используется для указания типа документа. (!DOCTYPE html). Служит для того, чтобы браузер понимал, как ему интерпретировать страницу, в соответствии с каким стандартом. Исходя из этого " +
+            "браузер будет знать, какие теги считать валидными, а какие устаревшими",
+        level: "easy"}
+    ,
+    { id:2,
+        question: "Опишите базовую структуру HTML-страницы?",
+        answer: "DOCTYPE -> HTML -> HEAD -> Title,Meta -> /HEAD -> BODY -> /BODY -> /HTML",
+        level: "easy"},
+    { id:3,
+        question: "Что такое семантика? Какие семантичные тэги вы знаете?",
+        answer:"",
+        level: "easy"},
+    { id:4,
+        question: "Какая разница между тэгами strong, em и b, i?",
+        answer:"",
+        level: "easy"},
+    { id:5,
+        question: "Что такое валидация? И какие типы проверок HTML документа вы знаете?",
+        answer:"",
+        level: "hard"},
+    { id:6,
+        question: "Какой тэг использовать для того, что бы сверстать кнопку?",
+        answer:""
+        ,level: "easy"},
+    { id:7,
+        question: "Что такое инлайновый стиль? Можно ли его переопределить?",
+        answer:"."
+        ,level: "hard"},
+    { id:8,
+        question: "Есть ли у HTML элементов свои дефолтные специфичные стили?",
+        answer:"."
+        ,level: "hard"},
+    { id:9,
+        question: "Для какого тэга используется атрибут alt и зачем он нужен?",
+        answer:"."
+        ,level: "easy"},
+    { id:10,
+        question: "Типы списков в HTML?",
+        answer:"."
+        ,level: "easy"},
+    { id:11,
+        question: "Как семантически правильно сверстать картинку с подписью?",
+        answer:"."
+        ,level: "hard"},
+    { id:12,
+        question: "Что такое HTML и для чего он используется?",
+        answer:"."
+        ,level: "easy"},
+    { id:13,
+        question: "Типы input элементов в HTML?",
+        answer:"."
+        ,level: "easy"},
+    { id:14,
+        question: "Что такое элемент canvas? И для чего он используется?",
+        answer:"."
+        ,level: "easy"},
+    { id:15,
+        question: "Для чего используют data-атрибуты?",
+        answer:"."
+        ,level: "hard"},
+    { id:16,
+        question: "Разница между script, script async и script defer?",
+        answer:"."
+        ,level: "hard"},
+    { id:17,
+        question: "Для чего используется элемент datalist?",
+        answer:"."
+        ,level: "hard"},
+    { id:18,
+        question: "Что такое CSS? И для чего он используется?",
+        answer:"."
+        ,level: "easy"},
+    { id:19,
+        question: "Варианты добавление CSS стилей на страницу?",
+        answer:"."
+        ,level: "easy"},
+    { id:20,
+        question: "Типы позиционирования в CSS?",
+        answer:"."
+        ,level: "hard"},
+    { id:21,
+        question: "Блочная модель CSS? ",
+        answer:"."
+        ,level: "easy"},
+    { id:22,
+        question: "Что такое специфичность селектора? Как считать вес селектора?",
+        answer:"."
+        ,level: "hard"},
+    { id:23,
+        question: "Разница между Reset.css и Normalize.css?",
+        answer:"."
+        ,level: "hard"},
+    { id:23,
+        question: "Разница между margin и padding?",
+        answer:"."
+        ,level: "easy"},
+    { id:24,
+        question: "Разница между display: none и visibility: hidden?",
+        answer:"."
+        ,level: "hard"},
+    { id:25,
+        question: "Разница между блочным и строчным (инлайновым) элементами?",
+        answer:"."
+        ,level: "easy"},
+    { id:26,
+        question: "Разница между адаптивным (adaptive) и отзывчивым (responsive) дизайнами?",
+        answer:"."
+        ,level: "hard"},
+    { id:27,
+        question: "Что такое CSS-правило?",
+        answer:"."
+        ,level: "hard"},
+    { id:28,
+        question: "Разница между классом и идентификатором в CSS?",
+        answer:"."
+        ,level: "easy"},
+    { id:29,
+        question: "Что такое CSS спрайт? И для чего он используется?",
+        answer:"."
+        ,level: "hard"},
+    { id:30,
+        question: "Что такое вендорные префиксы? И для чего они используются?",
+        answer:"."
+        ,level: "hard"},
+    { id:31,
+        question: "Разница между Progressive Enhancement и Graceful Degradation?",
+        answer:"."
+        ,level: "hard"},
+    { id:32,
+        question: "Что такое псевдоэлементы? И для чего они используются?",
+        answer:"."
+        ,level: "hard"},
+    { id:33,
+        question: "Что такое схлопывание границ (margin collapsing)?",
+        answer:"."
+        ,level: "hard"},
+    { id:34,
+        question: "Что такое кроссбраузерность?",
+        answer:"."
+        ,level: "hard"},
+    { id:35,
+        question: "Что такое CSS препроцессор?",
+        answer:"."
+        ,level: "hard"},
+
+]*/
 
 const Cards = () => {
 
-    const [currentQuestion, setCurrentQuestion] = useState(0)
-    const [currentAnswer, setCurrentAnswer] = useState(0)
-    const [showAnswer, setShowAnswer] = useState(false)
-    const [filter, setFilter] = useState<FilterValueType>("all")
+    const [cardsQuestions, setCardsQuestions] = useState([])
+    const [cardsQuestionsHtml, setCardsQuestionsHtml] = useState([])
+    console.log(cardsQuestions)
+    useEffect( () => {
 
-    const nextQuestionClick =() => {
-        const nextQuestion = currentQuestion +1
-        if (nextQuestion < cardsQuestions.length){
-            setCurrentQuestion(nextQuestion)
-            setShowAnswer(false)
-        }
-    }
-
-    const backQuestionClick =() => {
-            if (currentQuestion !==0) {
-            setCurrentQuestion(currentQuestion-1)
-                setShowAnswer(false)
-            }
-    }
-
-    const showAnswerClick =() => {
-        setShowAnswer(true)
-        setCurrentAnswer(currentAnswer+1)
-    }
-    let taskQuestion = cardsQuestions
-    if (filter === "easy") {
-        taskQuestion= cardsQuestions.filter(t => t.level ==="easy")}
-        if (filter === "hard") {
-            taskQuestion = cardsQuestions.filter(t => t.level ==="hard")}
-
-        function changeFilter(value:FilterValueType){
-            setFilter(value)
-            setCurrentQuestion(0)
-            setShowAnswer(false)
-        }
-
-
+    fetch('http://localhost:3004/react')
+    .then(res => {
+        return res.json()
+    })
+    .then( data => {
+        setCardsQuestions(data)
+        console.log(data)
+    })
+    }, [])
 
     return (<div className={s.wrap}>
-            <div className={s.description}>В данном разделе вы можете поучить теорию. Получаете вопрос, пытаетесь ответить самостоятельно, если не можете, смотрите ответ
-            Вопросы разбиты на уровни easy, hard условно.</div>
-            <div className={s.levelBlock}>
-                <button onClick={() => {changeFilter("easy")}}>Easy</button>
-                <button onClick={() => {changeFilter("hard")}}>Hard</button>
-                <button onClick={() => {changeFilter("all")}}>All</button>
+        <h3>Вопросы для самопроверки React</h3>
+         {cardsQuestions.length ===0 ? '' : <Card cardsQuestions={cardsQuestions}/> }
+
+
+            {/*    <div className={s.nameCard}>
+                <h3>Вопросы на собеседовании CSS + HTML</h3>
+
+          <Card cardsQuestions={cardsQuestionsHtml}/>
             </div>
-            <div className={s.cardsBlock}>
-
-        <div className={s.questionCount}>
-            <span>Вопрос {currentQuestion+1} / {taskQuestion.length}</span>
-        </div>
-    <div className={s.questionText}>{taskQuestion[currentQuestion].question}</div>
-
-        {showAnswer?
-        <div className={s.showAnswer}>{taskQuestion[currentQuestion].answer}</div>: ''}
-                <div className={s.buttonSection}>
-    <button onClick={showAnswerClick}>Показать ответ</button>
-        <div className={s.navigationButton}>
-
-        <button onClick={backQuestionClick}>Назад</button>
-            <button onClick={nextQuestionClick}>Далее</button>
-        </div>
-    </div>
+            <div className={s.nameCard}>
+                <h3>Вопросы на собеседовании JS</h3>
+                <Card cardsQuestions={cardsQuestions}/>
             </div>
+            <div className={s.nameCard}>
+                <h3>Задачи на собеседовании JS</h3>
+                <Card cardsQuestions={cardsQuestions}/>
+            </div>*/}
 </div>
 
     )

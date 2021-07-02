@@ -1,34 +1,51 @@
+.cardsBlock {
+    background-color: #252d4a;
+    width: 650px;
+    min-height: 200px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+        margin-bottom: 70px;
 
-.card{
-   width: 250px;
-    height: 300px;
-    margin: 10px;
-    position: relative;
-    perspective: 1200px;
 }
 
-.front, .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
+.questionText{
+    color: beige;
+    font-size: 2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.questionCount{
+    color: beige;
+    font-size: 1rem;
+}
+
+.buttonSection{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 2s;
-    backface-visibility: hidden;
-    border-radius: 10px;
-}
-.front {
-background-color: beige;
-}
-.back {
-background-color: aqua;
-    transform: rotateY(180deg);
+    flex-direction: column;
+    margin-top: 45px;
 }
 
-.card:hover .front {transform: rotateY(180deg)}
-.card:hover .back {transform: rotateY(0deg)}
+.navigationButton {
+    display: flex;
+}
+
+.showAnswer {
+    color: beige;
+    font-size: 1.3rem;
+}
+
+.levelBlock {
+    color: beige;
+    display: flex;
+    width: 450px;
+}
+
+.levelBlock button:hover{
+    background-color: #234668;
+}
+
+
 
 

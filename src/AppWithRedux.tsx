@@ -8,12 +8,15 @@ import Cards from "./components/Cards/Cards";
 import Practice from "./components/Practice/Practice";
 import Theory from "./components/Theory/Theory";
 import Test from "./components/Test/Test";
+import {Provider} from "react-redux";
+import {store} from "./redux/store";
 
 type AppPropsType = {}
 
-const App = (props: AppPropsType) => {
+const AppWithRedux = (props: AppPropsType) => {
 
     return (
+        <Provider store={store}>
         <div className="app-wrapper">
             <Header />
             <Navbar/>
@@ -33,8 +36,8 @@ const App = (props: AppPropsType) => {
 
             </div>
         </div>
-
+        </Provider>
     );
 }
 
-export default App;
+export default AppWithRedux;
