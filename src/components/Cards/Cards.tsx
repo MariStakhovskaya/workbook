@@ -277,7 +277,7 @@ const Cards = () => {
     console.log(cardsQuestions)
     useEffect( () => {
 
-    fetch('http://https://maristakhovskaya.github.io/workbook/db.json')
+    fetch('http://https://maristakhovskaya.github.io/workbook/db.json/react')
     .then(res => {
         return res.json()
     })
