@@ -277,7 +277,7 @@ const Cards = () => {
     console.log(cardsQuestions)
     useEffect( () => {
 
-    fetch('https://my-json-server.typicode.com/MariStakhovskaya/workbook/db')
+    fetch('https://my-json-server.typicode.com/MariStakhovskaya/workbook/db', {mode: 'cors'})
     .then(res => {
         return res.json()
     })
