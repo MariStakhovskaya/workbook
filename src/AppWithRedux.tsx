@@ -10,6 +10,8 @@ import Theory from "./components/Theory/Theory";
 import Test from "./components/Test/Test";
 import {Provider} from "react-redux";
 import {store} from "./redux/store";
+import ReactSummary from "./components/React/ReactSummary";
+import Js from "./components/js/Js";
 
 type AppPropsType = {}
 
@@ -23,8 +25,13 @@ const AppWithRedux = (props: AppPropsType) => {
             <div className="app-wrapper-content">
                 <Route path="/"
                        render={() => <Theory />}/>
+
                 <Route path="/theory"
                        render={() => <Theory />}/>
+                <Route path="/react"
+                       render={() => <ReactSummary />}/>
+                <Route path="/js"
+                       render={() => <Js />}/>
                 <Route path="/practice"
                        render={() => <Practice />}/>
                 <Route path="/cards"

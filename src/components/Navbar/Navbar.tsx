@@ -8,10 +8,12 @@ const Navbar = () => {
 
         <nav className={s.nav}>
             <div className={s.item}>
-                <NavLink to="/theory" activeClassName={s.active}>Теория</NavLink>
+                <NavLink to="/theory" activeClassName={s.active}>Быстрые подсказки</NavLink>
+               <div> <NavLink to="/react" activeClassName={s.active}>- React</NavLink></div>
+               <div> <NavLink to="/js" activeClassName={s.active}>- JS</NavLink></div>
             </div>
             <div className={s.item}>
-                <NavLink to="/practice" activeClassName={s.active}>Практика</NavLink>
+                <NavLink to="/practice" activeClassName={s.active}>Задачи</NavLink>
             </div>
             <div className={s.item}>
                 <NavLink to="/cardsQuestion" activeClassName={s.active}>Самоподготовка</NavLink>
